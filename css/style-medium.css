@@ -1,0 +1,121 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/light-grey-terrazzo.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Roboto', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 60vw;
+    height: calc((12/9)*60vw);
+    background: linear-gradient(160deg, steelblue 0%, teal 100%);
+    /* background: steelblue; */
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.deck .card {
+    width: 11vw;
+    height: calc((16/9)*11vw);
+    background: #303030 url('../img/udacity.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    font-size: 0;
+    color: snow;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    background: #c0c0c0;
+    cursor: default;
+}
+
+.deck .card.show {
+    transform: rotateY(180deg);
+    transition: 0.5s;
+    font-size: 1.5rem;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 1.6rem;
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.deck .card.hard {
+  transform: scale(0.8);
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 45vw;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}

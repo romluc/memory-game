@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Matching Game</title>
+    <title>Rom's Matching Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <link rel="stylesheet" href="css/libs/materialize.css"> -->
     <link rel="stylesheet" href="css/libs/google-fonts.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
+
+    <!-- RWD -->
+    <link href="css/style.css" rel="stylesheet">
+    <link media="screen and (max-width: 780px)" href="css/style-medium.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png">
 </head>
 <body>
-
     <div class="container text-center">
         <header>
             <h1>Rom's Memory Game</h1>
@@ -58,7 +60,7 @@
                       <p id="winnerText"></p>
                   </div>
                   <div class="modal-footer">
-                      <button type="button" onclick="buildDeck(), $rating.removeClass('fa-star-o').addClass('fa-star'); " class="btn btn-default" data-dismiss="modal">Go Again!</button>
+                      <button type="button" onclick="restartGame(); " class="btn btn-default" data-dismiss="modal">Go Again!</button>
                   </div>
               </div>
           </div>
