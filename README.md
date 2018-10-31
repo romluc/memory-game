@@ -1,6 +1,8 @@
 # memory-game
 App built as part of Udacity's Web Fundamentals Nanodegree.
 
+Play it: https://romluc.github.io/memory-game/
+
 ## Features
 
 It comes with three difficulty levels. You should choose your desired level for the deck be built.
