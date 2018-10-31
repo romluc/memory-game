@@ -15,7 +15,7 @@
       ],
 
 
-      // Set variables to shorten code
+      // Set variables for a cleaner code
       gridCols = 0,
       gridRows = 0,
       level = 0,
