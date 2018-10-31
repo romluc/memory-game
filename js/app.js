@@ -11,7 +11,7 @@
       iconArr_Hard = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube',
         'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o',
         'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond',
-        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck', 'fixed'
+        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck'
       ],
 
 
