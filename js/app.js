@@ -11,26 +11,25 @@
       iconArr_Hard = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube',
         'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o',
         'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond',
-        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck'
+        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck', 'fixed'
       ],
 
 
-      gridCols = 3,
-      gridRows = 3,
-
-
       // Set variables to shorten code
-      level,
+      gridCols = 0,
+      gridRows = 0,
+      level = 0,
       iconArr = iconArr_Easy,
       allCards = [],
       arrCenter = 0,
-      card,
-      nowTime,
+      arrLast = 0;
       openCards = [],
       match = 0,
       second = 0,
       moves = 0,
       wait = 500,
+      card,
+      nowTime,
 
       // Scoring system from 1 to 3 stars to shorten code
       stars3 = 14,
@@ -87,24 +86,41 @@
       return array;
     }
 
-    function swapFixedCard(input, arrCenter, fixedShuffled) {
+    function swapFixedCard3(input, arrCenter, fixedShuffled) {
         let temp = input[arrCenter];
         input[arrCenter] = input[fixedShuffled];
         input[fixedShuffled] = temp;
     }
 
+    function swapFixedCard5(input, arrLast, fixedShuffled) {
+        let temp = input[arrCenter];
+        input[arrCenter] = input[fixedShuffled];
+        input[fixedShuffled] = temp;
+    }
 
     // Building the deck of cards
     function buildDeck() {
       // Shuffling the icons array items
       allCards = shuffle(iconArr);
       // for 3x3 and 5x5 decks (future functionality =)), it makes the fixed card to be the center one
-      arrCenter = Math.floor(allCards.length / 2);
+      arrLast = allCards.length;
 
-      // for easy level, set fixed (card cannot be flipped) on the very center of the grid
-      let fixedShuffled = allCards.indexOf('fixed');
-      //console.log(fixedShuffled);
-      swapFixedCard(allCards, arrCenter, fixedShuffled);
+
+      // For easy level, set fixed (card cannot be flipped) on the very center of the grid (design matters!)
+      if (gridCols === 3) {
+        let fixedShuffled = allCards.indexOf('fixed');
+        swapFixedCard3(allCards, arrCenter, fixedShuffled);
+      }
+      // For the Hard level, it swaps the fixed for the last one,
+      // so we can pop it and have a deck with 24 cards (for the sake of design)
+      if (gridCols === 5) {
+        let fixedShuffled = allCards.indexOf('fixed');
+
+        swapFixedCard5(allCards, arrLast, fixedShuffled);
+        console.log(allCards);
+        allCards.pop();
+        console.log(allCards);
+      }
 
       let n = 0; // the index to iterate allCards
       $('.deck').empty();
