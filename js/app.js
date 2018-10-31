@@ -11,7 +11,7 @@
       iconArr_Hard = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube',
         'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o',
         'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond',
-        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck', 'fixed'
+        'bus', 'bus', 'rocket', 'rocket', 'ship', 'ship', 'truck', 'truck'
       ],
 
 
@@ -22,7 +22,7 @@
       iconArr = iconArr_Easy,
       allCards = [],
       arrCenter = 0,
-      arrLast = 0;
+      arrLast = 0,
       openCards = [],
       match = 0,
       second = 0,
@@ -103,7 +103,7 @@
       // Shuffling the icons array items
       allCards = shuffle(iconArr);
       // for 3x3 and 5x5 decks (future functionality =)), it makes the fixed card to be the center one
-      arrLast = allCards.length;
+      arrLast = allCards.length-1;
 
 
       // For easy level, set fixed (card cannot be flipped) on the very center of the grid (design matters!)
@@ -113,14 +113,13 @@
       }
       // For the Hard level, it swaps the fixed for the last one,
       // so we can pop it and have a deck with 24 cards (for the sake of design)
-      if (gridCols === 5) {
-        let fixedShuffled = allCards.indexOf('fixed');
-
-        swapFixedCard5(allCards, arrLast, fixedShuffled);
-        console.log(allCards);
-        allCards.pop();
-        console.log(allCards);
-      }
+      // if (gridCols === 5) {
+      //   let fixedShuffled = allCards.indexOf('fixed');
+      //
+      //   //swapFixedCard5(allCards, arrLast, fixedShuffled);
+      //   console.log(allCards);
+      //   console.log(allCards);
+      // }
 
       let n = 0; // the index to iterate allCards
       $('.deck').empty();
@@ -138,6 +137,14 @@
             '<li class="card"><i class="fa fa-' + allCards[n] + '"></i></li></div>'));
           n++;
           }
+        }
+
+        // Correcting the grid layout
+        if (gridCols === 5) {
+          let lastElt = $('.col-2').last().remove();
+          console.log(lastElt);
+          lastElt.remove();
+          $('.deck').find('.open').addClass('hard');
         }
 
       // Enables the timer to reset to 0 when the game is restarted
