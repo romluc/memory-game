@@ -31,19 +31,14 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    font-size: 3rem;
 }
-
-/* .btn-secondary {
-  background: teal;
-} */
 
 /*
  * Styles for the deck of cards
  */
 
 .deck {
-    /* width: 660px;
-    height: 660px; */
     width: 60vw;
     height: calc((9/16)*60vw);
     background: linear-gradient(160deg, steelblue 0%, teal 100%);
@@ -75,10 +70,6 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
-.deck .card.hard {
-  transform: scale(0.5);
-}
-
 .deck .card.open {
     background: #c0c0c0;
     cursor: default;
@@ -87,15 +78,19 @@ h1 {
 .deck .card.show {
     transform: rotateY(180deg);
     transition: 0.5s;
-    font-size: 33px;
+    font-size: 1.5rem;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 1.6rem;
     transform: scale(1.1);
     transition: 0.5s;
+}
+
+.deck .card.hard {
+  transform: scale(0.8);
 }
 
 /*
@@ -104,7 +99,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 45vw;
     margin-bottom: 10px;
 }
 

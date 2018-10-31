@@ -64,6 +64,7 @@
       }
 
       totalCard = Math.floor(iconArr.length / 2);
+      arrCenter = Math.floor(iconArr.length / 2);
 
       buildDeck();
       initTime();
@@ -86,13 +87,7 @@
       return array;
     }
 
-    function swapFixedCard3(input, arrCenter, fixedShuffled) {
-        let temp = input[arrCenter];
-        input[arrCenter] = input[fixedShuffled];
-        input[fixedShuffled] = temp;
-    }
-
-    function swapFixedCard5(input, arrLast, fixedShuffled) {
+    function swapFixedCard(input, arrCenter, fixedShuffled) {
         let temp = input[arrCenter];
         input[arrCenter] = input[fixedShuffled];
         input[fixedShuffled] = temp;
@@ -102,24 +97,16 @@
     function buildDeck() {
       // Shuffling the icons array items
       allCards = shuffle(iconArr);
-      // for 3x3 and 5x5 decks (future functionality =)), it makes the fixed card to be the center one
-      arrLast = allCards.length-1;
-
 
       // For easy level, set fixed (card cannot be flipped) on the very center of the grid (design matters!)
       if (gridCols === 3) {
         let fixedShuffled = allCards.indexOf('fixed');
-        swapFixedCard3(allCards, arrCenter, fixedShuffled);
+        console.log(fixedShuffled);
+        console.log(allCards);
+        swapFixedCard(allCards, arrCenter, fixedShuffled);
+        console.log(allCards);
+        console.log(arrCenter);
       }
-      // For the Hard level, it swaps the fixed for the last one,
-      // so we can pop it and have a deck with 24 cards (for the sake of design)
-      // if (gridCols === 5) {
-      //   let fixedShuffled = allCards.indexOf('fixed');
-      //
-      //   //swapFixedCard5(allCards, arrLast, fixedShuffled);
-      //   console.log(allCards);
-      //   console.log(allCards);
-      // }
 
       let n = 0; // the index to iterate allCards
       $('.deck').empty();
@@ -142,9 +129,8 @@
         // Correcting the grid layout
         if (gridCols === 5) {
           let lastElt = $('.col-2').last().remove();
-          console.log(lastElt);
           lastElt.remove();
-          $('.deck').find('.open').addClass('hard');
+          $('.deck').find('.card').addClass('hard');
         }
 
       // Enables the timer to reset to 0 when the game is restarted
@@ -237,7 +223,6 @@
 
     // Clicking on the button located on the top right of the game, rebuilds deck and restart moves and time counters
     function restartGame() {
-      console.log('fui clicado');
       $('.fa-star').removeClass('fa-star-o').addClass('fa-star');
       buildDeck();
       initTime();
